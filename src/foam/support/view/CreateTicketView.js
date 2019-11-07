@@ -20,7 +20,7 @@ foam.CLASS({
     'foam.u2.dialog.NotificationMessage'
   ],
 
-  imports:[
+  imports: [
     'ctrl',
     'ticketDAO',
     'user',
@@ -79,18 +79,10 @@ foam.CLASS({
     ^ .foam-u2-tag-TextArea {
       margin-top:8px;
     }
-    ^ .property-requestorEmail,.property-requestorName{
-      width: 450px;
-      height: 40px;
-    }
     ^ .property-message{
-      width: 940px;
+      width: 930px;
       height: 240px;
       border: 1px solid lightgrey;
-    }
-    ^ .property-subject{
-      width: 940px;
-      height: 40px;
     }
     ^ .New-Ticket {
       margin-top:30px;
@@ -162,7 +154,9 @@ foam.CLASS({
     'submitAsPopUp',
     {
       name: 'dao',
-      factory: function() { return this.user.tickets; }
+      factory: function() {
+        return this.user.tickets;
+      }
     },
     {
       class: 'String',
@@ -209,7 +203,7 @@ foam.CLASS({
           .start().addClass('right-actions')
             .start(this.SUBMIT_AS_DROP_DOWN, null, this.submitAsMenuBtn_$).end()
             .start(this.SUBMIT_AS, {
-              label: this.slot(function (status) {
+              label: this.slot(function(status) {
                 return 'Submit as ' + status;
               }, this.status$)
             }).end()
@@ -263,7 +257,7 @@ foam.CLASS({
     },
     {
       name: 'submitAs',
-      code: function (X) {
+      code: function(X) {
         var self = this;
 
         var ticket = this.Ticket.create({
@@ -274,15 +268,15 @@ foam.CLASS({
           status: this.status
         });
 
-        this.dao.put(ticket).then(function(ticket){
-          if (self.message == "") return;
+        this.dao.put(ticket).then(function(ticket) {
+          if ( self.message == '' ) return;
           var message = self.TicketMessage.create({
             senderId: self.user.id,
             dateCreated: new Date(),
             message: self.message,
             type: 'Internal'
           });
-          ticket.messages.put(message).then(function(a){
+          ticket.messages.put(message).then(function(a) {
             ctrl.add(self.NotificationMessage.create({ message: 'Ticket Created!' }));
           });
         });
@@ -308,17 +302,17 @@ foam.CLASS({
 
         // add items
         this.submitAsPopUp.addClass('popUpDropDown')
-          .add(this.slot(function (status) {
-            var statuses = ['New', 'Pending', 'Open', 'Updated', 'Solved'].filter(function (status) {
+          .add(this.slot(function(status) {
+            var statuses = ['New', 'Pending', 'Open', 'Updated', 'Solved'].filter(function(status) {
               return status !== self.status;
             });
 
-            return this.E().forEach(statuses, function (status) {
+            return this.E().forEach(statuses, function(status) {
               this
                 .start('div')
                 .start().add('Submit as').addClass('Submit-as').end()
                 .start().addClass(status).addClass('status').add(status).end()
-                .on('click', function () {
+                .on('click', function() {
                   self.status = status;
                   self.submitAsPopUp.close();
                 })
