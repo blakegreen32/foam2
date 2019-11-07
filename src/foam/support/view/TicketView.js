@@ -36,6 +36,9 @@ foam.CLASS({
       border: none;
       margin: 0 20px 20px;
     }
+    ^ .foam-u2-view-ScrollTableView {
+      width: 100%;
+    }
     ^ .foam-u2-view-TableView-row:hover {
       cursor: pointer;
       background: /*%GREY4%*/ #e7eaec;

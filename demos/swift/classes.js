@@ -61,6 +61,7 @@ var classes = [
   'foam.support.model.SupportEmail',
   'foam.support.model.Ticket',
   'foam.support.model.TicketMessage',
+  'foam.support.model.TicketType',
   'foam.swift.dao.ArrayDAO',
   'foam.swift.dao.CachingDAO',
   'foam.swift.parse.StringPStream',

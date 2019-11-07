@@ -15,7 +15,7 @@ foam.CLASS({
   ],
 
   tableColumns: [
-    'id', 'requestorEmail', 'subject', 'createdAt', 'status'
+    'id', 'requestorEmail', 'subject', 'type', 'createdAt', 'status'
   ],
   exports: [
     'subject'
@@ -25,8 +25,8 @@ foam.CLASS({
       class: 'Long',
       name: 'id',
       visibility: foam.u2.Visibility.RO,
-      label:'Ticket ID'
-    }, 
+      label: 'Ticket ID'
+    },
     {
       class: 'String',
       name: 'requestorEmail'
@@ -39,6 +39,11 @@ foam.CLASS({
       class: 'String',
       name: 'subject',
       label: 'Subject',
+    },
+    {
+      class: 'Enum',
+      of: 'foam.support.model.TicketType',
+      name: 'type'
     },
     {
       class: 'Date',
