@@ -15,11 +15,11 @@ foam.CLASS({
     'foam.u2.ListCreateController'
   ],
 
-  imports: [ 'user' ,'createLabel'],
+  imports: ['user', 'createLabel'],
 
-  exports: [ 'hideSummary' ],
+  exports: ['hideSummary'],
 
-  css:`
+  css: `
     ^ {
       width: 970px;
       margin: auto;
@@ -75,8 +75,7 @@ foam.CLASS({
   ],
 
   methods: [
-    function initE(){
-
+    function initE() {
       this.addClass(this.myClass())
       .start().hide(this.hideSummary$)
         .tag({ class: 'foam.support.view.TicketSummaryView' })
@@ -87,12 +86,12 @@ foam.CLASS({
         detailView: this.TicketDetailView,
         summaryView: this.TicketTableView,
         createDetailView: this.CreateTicketView,
-        createLabel:'New Ticket',
+        createLabel: 'New Ticket',
         showActions: false
-      })
+      });
     }
   ],
-  
+
   classes: [
     {
       name: 'TicketTableView',
@@ -102,8 +101,8 @@ foam.CLASS({
         'foam.u2.view.ScrollableTableView',
         'foam.support.model.Ticket',
       ],
-      
-      imports: [ 'user'],
+
+      imports: ['user'],
 
       properties: [
         'selection'
