@@ -243,7 +243,7 @@ foam.CLASS({
           .start()
             .tag(this.MESSAGE)
           .end()
-        .end()
+        .end();
     }
   ],
 
