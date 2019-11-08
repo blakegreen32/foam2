@@ -287,6 +287,7 @@ foam.CLASS({
           requestorName: this.requestorName,
           userId: this.user.id,
           subject: this.subject,
+          type: this.type,
           status: this.status
         });
 
