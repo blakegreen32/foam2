@@ -83,4 +83,4 @@ var classes = [
 
 module.exports = {
   classes: classes,
-}
+};

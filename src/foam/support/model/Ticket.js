@@ -15,7 +15,7 @@ foam.CLASS({
   ],
 
   tableColumns: [
-    'id', 'requestorEmail', 'subject', 'type', 'createdAt', 'status'
+    'id', 'requestorEmail', 'subject', 'createdAt', 'status'
   ],
   exports: [
     'subject'

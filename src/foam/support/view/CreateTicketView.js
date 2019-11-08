@@ -79,6 +79,11 @@ foam.CLASS({
     ^ .foam-u2-tag-TextArea {
       margin-top:8px;
     }
+    ^ .foam-u2-tag-Select {
+      margin-top:8px;
+      margin-bottom:8px;
+      width: 235px;
+    }
     ^ .property-message{
       width: 930px;
       height: 240px;
@@ -171,6 +176,11 @@ foam.CLASS({
       name: 'subject'
     },
     {
+      class: 'Enum',
+      of: 'foam.support.model.TicketType',
+      name: 'type'
+    },
+    {
       class: 'String',
       name: 'message',
       view: 'foam.u2.tag.TextArea'
@@ -231,19 +241,31 @@ foam.CLASS({
             .end()
           .end()
         .end()
-          .start().addClass('label')
-            .add('Subject')
+        .start()
+          .start().addClass('rname')
+            .start().addClass('label')
+              .add('Subject')
+            .end()
+            .start()
+              .tag(this.SUBJECT)
+            .end()
           .end()
-          .start()
-            .tag(this.SUBJECT)
+          .start().addClass('remail')
+            .start().addClass('label')
+              .add('Type')
+            .end()
+            .start()
+              .tag(this.TYPE)
+            .end()
           .end()
-          .start().addClass('label')
-            .add('Description')
-          .end()
-          .start()
-            .tag(this.MESSAGE)
-          .end()
-        .end();
+        .end()
+        .start().addClass('label')
+          .add('Description').style({ width: '70px', height: '30px' })
+        .end()
+        .start()
+          .tag(this.MESSAGE)
+        .end()
+      .end();
     }
   ],
 
