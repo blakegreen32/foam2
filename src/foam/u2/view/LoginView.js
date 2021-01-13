@@ -74,7 +74,7 @@ foam.CLASS({
   }
   ^ .top-bar-img {
     padding-left: 1vh;
-    height: 4vh;
+    height: 5vh;
     padding-top: 1vh;
   }
 
