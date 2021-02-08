@@ -52,6 +52,10 @@ foam.CLASS({
       `
     },
     {
+      class: 'String',
+      name: 'paymentIssuerTag'
+    },
+    {
       name: 'inherentPermissions',
       javaGetter: 'return new String[] { "serviceprovider.read." + getId() };',
       factory: function() {
