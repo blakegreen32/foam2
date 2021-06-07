@@ -638,10 +638,10 @@
       name: 'SUCCESS_ASSIGNED',
       message: 'You have successfully assigned this request'
     },
-     {
+    {
       name: 'SUCCESS_ASSIGNED_TITLE',
       message: 'Request Assigned'
-     },
+    },
     {
       name: 'SUCCESS_UNASSIGNED',
       message: 'You have successfully unassigned this request'
@@ -654,20 +654,18 @@
       name: 'SUCCESS_APPROVED',
       message: 'You have successfully approved this request'
     },
-
-     {
+    {
       name: 'SUCCESS_APPROVED_TITLE',
       message: 'Request Approved'
-     },
+    },
     {
       name: 'SUCCESS_MEMO',
       message: 'You have successfully added a memo'
     },
-  {
+    {
       name: 'SUCCESS_MEMO_TITLE',
       message: 'Memo Added'
-   },
-
+    },
     {
       name: 'SUCCESS_REJECTED',
       message: 'You have successfully rejected this request'
@@ -675,7 +673,7 @@
     {
       name: 'SUCCESS_REJECTED_TITLE',
       message: 'Request Rejected'
-     },
+    },
     {
       name: 'SUCCESS_CANCELLED',
       message: 'You have successfully cancelled this request'
@@ -683,7 +681,15 @@
     {
       name: 'SUCCESS_CANCELLED_TITLE',
       message: 'Request Cancelled'
-     },
+    },
+    {
+      name: 'SUCCESS_REQUEST_INFO',
+      message: 'Request For Information Sent'
+    },
+    {
+      name: 'SUCCESS_REQUEST_INFO_TITLE',
+      message: 'You have successfully sent a request for information'
+    },
     {
       name: 'ASSIGN_TITLE',
       message: 'Select an assignee'
@@ -1042,6 +1048,21 @@
           this.notify(e.message, '', this.LogLevel.ERROR, true);
         });
       }
+    },
+    {
+      name: 'requestInformation',
+      section: 'approvalRequestInformation',
+      isAvailable: function() {
+        return status === this.ApprovalStatus.REQUESTED;
+      },
+      code: function(X) {
+        var objToAdd = X.objectSummaryView ?
+          X.objectSummaryView : X.summaryView;
+        objToAdd.add(this.Popup.create({ backgroundColor: 'transparent' }).tag({
+          class: 'net.nanopay.rfi.RequestForInfoModal',
+          onExecute: this.requestInformationL.bind(this, X)
+        }));
+      }
     }
   ],
 
@@ -1091,6 +1112,18 @@
           this.throwError.pub(e);
           this.notify(e.message, '', this.LogLevel.ERROR, true);
         });
+      }
+    },
+    {
+      name: 'requestInformationL',
+      code: function(X) {
+        this.notify(this.SUCCESS_REQUEST_INFO_TITLE, this.SUCCESS_REQUEST_INFO, this.LogLevel.INFO, true);
+        if (
+          X.stack.top &&
+          ( X.currentMenu.id !== X.stack.top[2] )
+        ) {
+          X.stack.back();
+        }
       }
     },
     {
