@@ -1052,7 +1052,7 @@
     {
       name: 'requestInformation',
       section: 'approvalRequestInformation',
-      isAvailable: function() {
+      isAvailable: function(status) {
         return status === this.ApprovalStatus.REQUESTED;
       },
       code: function(X) {
@@ -1060,6 +1060,7 @@
           X.objectSummaryView : X.summaryView;
         objToAdd.add(this.Popup.create({ backgroundColor: 'transparent' }).tag({
           class: 'net.nanopay.rfi.RequestForInfoModal',
+          userId: this.createdFor,
           onExecute: this.requestInformationL.bind(this, X)
         }));
       }
@@ -1117,7 +1118,7 @@
     {
       name: 'requestInformationL',
       code: function(X) {
-        this.notify(this.SUCCESS_REQUEST_INFO_TITLE, this.SUCCESS_REQUEST_INFO, this.LogLevel.INFO, true);
+        this.notify(this.SUCCESS_REQUEST_INFO, this.SUCCESS_REQUEST_INFO_TITLE, this.LogLevel.INFO, true);
         if (
           X.stack.top &&
           ( X.currentMenu.id !== X.stack.top[2] )
