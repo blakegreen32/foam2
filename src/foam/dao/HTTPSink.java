@@ -21,7 +21,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Base64;
+import org.apache.commons.codec.binary.Base64;
 
 public class HTTPSink
     extends AbstractSink
@@ -34,7 +34,7 @@ public class HTTPSink
   protected boolean outputDefaultValues_;
 
   public HTTPSink(String url, Format format) {
-    this(url, "", format, null, false);
+    this(url, "", "", format, null, false);
   }
 
   public HTTPSink(String url, String bearerToken, String payloadSignature, Format format, PropertyPredicate propertyPredicate, boolean outputDefaultValues) {
